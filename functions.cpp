@@ -5,6 +5,7 @@
 #include <vector>
 #include <algorithm>
 #include <iterator>
+
 std::vector<std::string> createPostfix(std::string s){
     std::stack<std::string> stack;
     std::vector<std::string> res;
@@ -192,7 +193,7 @@ float evaluateExpression(std::vector<std::string> postfixExpression){
     return res;
 }
 
-int main() {
+/*int main() {
     std::string expression;
     std::vector<std::string> postfixExpression;
     std::getline(std::cin, expression);
@@ -204,4 +205,4 @@ int main() {
     float result = evaluateExpression(postfixExpression);
     std::cout << "The result is :   \n" << result <<std::endl;
     return 0;
-}
+}*/
