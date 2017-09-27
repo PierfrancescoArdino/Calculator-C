@@ -11,7 +11,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c8ff1e5-0899-4baa-9dc3-b3fad808533d" name="Default" comment="" />
+    <list default="true" id="9c8ff1e5-0899-4baa-9dc3-b3fad808533d" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/calculator.cpp" afterPath="$PROJECT_DIR$/calculator.cpp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/functions.cpp" afterPath="$PROJECT_DIR$/functions.cpp" />
+    </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,8 +29,8 @@
       <file leaf-file-name="functions.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/functions.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="119" column="0" lean-forward="false" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="68" />
+            <state relative-caret-position="387">
+              <caret line="235" column="33" lean-forward="false" selection-start-line="235" selection-start-column="33" selection-end-line="235" selection-end-column="33" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -37,11 +41,21 @@
       <file leaf-file-name="calculator.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/calculator.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="29" column="29" lean-forward="false" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
+            <state relative-caret-position="1242">
+              <caret line="69" column="41" lean-forward="false" selection-start-line="69" selection-start-column="41" selection-end-line="69" selection-end-column="41" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gdkkeysyms.h" pinned="false" current-in-tab="false">
+        <entry file="file:///usr/include/gtk-3.0/gdk/gdkkeysyms.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="196">
+              <caret line="124" column="33" lean-forward="false" selection-start-line="124" selection-start-column="29" selection-end-line="124" selection-end-column="33" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -70,7 +84,14 @@
       </file>
     </leaf>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>ff08</find>
+      <find>ffae</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -80,6 +101,7 @@
         <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/calculator.h" />
         <option value="$PROJECT_DIR$/GTKtest.cpp" />
+        <option value="$PROJECT_DIR$/functions.cpp" />
         <option value="$PROJECT_DIR$/calculator.cpp" />
       </list>
     </option>
@@ -91,9 +113,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="27" />
-    <option name="width" value="960" />
-    <option name="height" value="1053" />
+    <option name="x" value="710" />
+    <option name="y" value="89" />
+    <option name="width" value="1181" />
+    <option name="height" value="923" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -126,7 +149,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -164,7 +187,7 @@
       <updated>1506428314948</updated>
       <workItem from="1506428316176" duration="186000" />
       <workItem from="1506428512552" duration="161000" />
-      <workItem from="1506428674766" duration="12340000" />
+      <workItem from="1506428674766" duration="31664000" />
     </task>
     <task id="LOCAL-00001" summary="Gui Implementation">
       <created>1506441368974</created>
@@ -173,18 +196,26 @@
       <option name="project" value="LOCAL" />
       <updated>1506441368974</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Gui Improved, Resizing and Keyboard implementation">
+      <created>1506457795548</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1506457795548</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12687000" />
+    <option name="totallyTimeSpent" value="32011000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.51927197" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3576017" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -211,7 +242,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Gui Implementation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Gui Implementation" />
+    <MESSAGE value="Gui Improved, Resizing and Keyboard implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Gui Improved, Resizing and Keyboard implementation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -236,6 +268,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///usr/include/gtkmm-3.0/gtkmm/button.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="490" column="41" lean-forward="true" selection-start-line="490" selection-start-column="41" selection-end-line="490" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="235" column="33" lean-forward="false" selection-start-line="235" selection-start-column="33" selection-end-line="235" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/functions.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -246,20 +296,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/functions.cpp">
+    <entry file="file:///usr/include/gtk-3.0/gdk/gdkkeysyms.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="119" column="0" lean-forward="false" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="68" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="196">
+          <caret line="124" column="33" lean-forward="false" selection-start-line="124" selection-start-column="29" selection-end-line="124" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/calculator.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="29" column="29" lean-forward="false" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
+        <state relative-caret-position="1242">
+          <caret line="69" column="41" lean-forward="false" selection-start-line="69" selection-start-column="41" selection-end-line="69" selection-end-column="41" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

@@ -11,6 +11,7 @@ std::vector<std::string> createPostfix(std::string s){
     std::vector<std::string> res;
     std::string term;
     std::string number = "";
+    std::string op = "";
     for(char &tmp : s)
     {
         std::ostringstream s;
@@ -22,6 +23,10 @@ std::vector<std::string> createPostfix(std::string s){
             {
                 res.push_back(number);
                 number = "";
+            }
+            if(op!="")
+            {
+                op ="";
             }
             std::string top = stack.top().c_str();
             while (top != "(")
@@ -47,6 +52,10 @@ std::vector<std::string> createPostfix(std::string s){
                 res.push_back(number);
                 number = "";
             }
+            if(op!="")
+            {
+                op ="";
+            }
             stack.push(term);
         }
         else if ((term >= "0" && term <="9") || term ==".")
@@ -60,8 +69,12 @@ std::vector<std::string> createPostfix(std::string s){
                 res.push_back(number);
                 number = "";
             }
+            if(op!="")
+            {
+                op ="";
+            }
             if(!stack.empty() && (stack.top() == "+" || stack.top() == "-" || stack.top() == "*" || stack.top() == "/"
-               || stack.top() == "^")){
+               || stack.top() == "^"|| stack.top()=="sqrt" || stack.top()=="exp" || stack.top()=="log")){
                 res.push_back(stack.top().c_str());
                 stack.pop();
             }
@@ -74,7 +87,11 @@ std::vector<std::string> createPostfix(std::string s){
                 res.push_back(number);
                 number = "";
             }
-            if(!stack.empty() && (stack.top() == "*" || stack.top() == "/" || stack.top() == "^")){
+            if(op!="")
+            {
+                op ="";
+            }
+            if(!stack.empty() && (stack.top() == "*" || stack.top() == "/" || stack.top() == "^" || stack.top()=="sqrt" || stack.top()=="exp" || stack.top()=="log")){
                 res.push_back(stack.top().c_str());
                 stack.pop();
             }
@@ -87,6 +104,10 @@ std::vector<std::string> createPostfix(std::string s){
                 res.push_back(number);
                 number = "";
             }
+            if(op!="")
+            {
+                op ="";
+            }
             stack.push(term);
         }
         else if(term == " ")
@@ -95,6 +116,17 @@ std::vector<std::string> createPostfix(std::string s){
             {
                 res.push_back(number);
                 number = "";
+            }
+            if(op!="")
+            {
+                op ="";
+            }
+        }
+        else if((term >="a" && term<="z")||(term>="A" && term<="Z"))
+        {
+            op.append(term);
+            if(op == "sqrt" || op=="exp" || op=="log"){
+                stack.push(op);
             }
         }
 
@@ -184,6 +216,24 @@ float evaluateExpression(std::vector<std::string> postfixExpression){
             else{
                 res = op2;
             }
+            stack.push(std::to_string(res));
+        }
+        else if(term=="sqrt"){
+            double op = atof(stack.top().c_str());
+            stack.pop();
+            res = std::sqrt(op);
+            stack.push(std::to_string(res));
+        }
+        else if(term=="exp"){
+            double op = atof(stack.top().c_str());
+            stack.pop();
+            res = std::exp(op);
+            stack.push(std::to_string(res));
+        }
+        else if(term=="log"){
+            double op = atof(stack.top().c_str());
+            stack.pop();
+            res = std::log10(op);
             stack.push(std::to_string(res));
         }
         else{

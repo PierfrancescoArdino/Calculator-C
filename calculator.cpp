@@ -17,18 +17,25 @@ protected:
     Button dotButton;
     Button leftParButton;
     Button rightParButton;
+    Button sqrtButton;
+    Button expButton;
+    Button logButton;
+    Button squaredButton;
+    Button ansButton;
     vector<Button> operationButton;
     bool expResult;
+    bool floatNumber;
+
 
 
     // methods
 private:
     bool on_key_press_event(GdkEventKey *event) override;
     void numberButtonClicked(int index);
-    void operationButtonClicked(int index);
+    void operationButtonClicked(string operation);
     void parButtonClicked(string parenthesis);
     void equalButtonClicked();
-
+    void ansButtonClicked();
 
 
 public:
@@ -36,6 +43,7 @@ public:
 };
 Calculator::Calculator(){
         expResult=false;
+        floatNumber=false;
         buttonMatrix.resize(3);
         add_events(Gdk::KEY_PRESS_MASK);
         set_border_width(12);
@@ -51,10 +59,15 @@ Calculator::Calculator(){
 
         // labelTextToDisplay
         labelTextToDisplay.set_label("Expression to compute:");
-        calcGrid.attach(labelTextToDisplay,0,0,4,3);
+        labelTextToDisplay.set_justify(Gtk::JUSTIFY_CENTER);
+        calcGrid.attach(labelTextToDisplay,0,0,6,3);
         // entryTextToDisplay
         entryTextToDisplay.set_text("");
-        calcGrid.attach(entryTextToDisplay,0,3,4,3);
+        entryTextToDisplay.set_alignment(Gtk::ALIGN_END);
+        calcGrid.attach(entryTextToDisplay,0,3,5,3);
+        ansButton.set_label("ans");
+        ansButton.signal_clicked().connect(sigc::mem_fun(*this, &Calculator::ansButtonClicked));
+        calcGrid.attach(ansButton,5,3,1,3);
 
         int i=2;
         int j=0;
@@ -106,7 +119,7 @@ Calculator::Calculator(){
             }
             operation.set_label(label);
             operation.signal_clicked().connect(
-                    sigc::bind<int>(sigc::mem_fun(*this, &Calculator::operationButtonClicked), i));
+                    sigc::bind<string>(sigc::mem_fun(*this, &Calculator::operationButtonClicked), label));
             if(label != "^") {
                 calcGrid.attach(operation, 3, 9 - i, 1, 1);
 
@@ -117,14 +130,26 @@ Calculator::Calculator(){
         }
         equalButton.set_label("=");
         equalButton.signal_clicked().connect(sigc::mem_fun(*this, &Calculator::equalButtonClicked));
-        calcGrid.attach(equalButton,4,8,1,2);
+        calcGrid.attach(equalButton,4,9,2,1);
         equalButton.show();
         leftParButton.set_label("(");
         leftParButton.signal_clicked().connect(sigc::bind<Glib::ustring>(sigc::mem_fun(*this, &Calculator::parButtonClicked),"("));
         calcGrid.attach(leftParButton,4,6,1,1);
         rightParButton.set_label(")");
         rightParButton.signal_clicked().connect(sigc::bind<Glib::ustring>(sigc::mem_fun(*this, &Calculator::parButtonClicked),")"));
-        calcGrid.attach(rightParButton,4,7,1,1);
+        calcGrid.attach(rightParButton,5,6,1,1);
+        sqrtButton.set_label("√");
+        sqrtButton.signal_clicked().connect(sigc::bind<string>(sigc::mem_fun(*this, &Calculator::operationButtonClicked), "sqrt("));
+        calcGrid.attach(sqrtButton,4,7,1,1);
+        expButton.set_label("exp");
+        expButton.signal_clicked().connect(sigc::bind<string>(sigc::mem_fun(*this, &Calculator::operationButtonClicked), "exp("));
+        calcGrid.attach(expButton,5,7,1,1);
+        logButton.set_label("log");
+        logButton.signal_clicked().connect(sigc::bind<string>(sigc::mem_fun(*this, &Calculator::operationButtonClicked), "log("));
+        calcGrid.attach(logButton,4,8,1,1);
+        squaredButton.set_label("x^2");
+        squaredButton.signal_clicked().connect(sigc::bind<string>(sigc::mem_fun(*this, &Calculator::operationButtonClicked), "^2"));
+        calcGrid.attach(squaredButton,5,8,1,1);
         for(Widget *obj : calcGrid.get_children())
         {
             obj->set_hexpand(true);
@@ -144,12 +169,18 @@ void Calculator::numberButtonClicked(int index)
     {
         if(expResult == true){
             entryTextToDisplay.set_text("");
+            entryTextToDisplay.set_position(0);
             expResult=false;
+            floatNumber=false;
         }
         string text = entryTextToDisplay.get_text();
-        if(index ==10)
+        if(index == 10 )
         {
-            text.append(".");
+            if(!floatNumber) {
+                text.append(".");
+                floatNumber = true;
+            }
+
         }
         else
         {
@@ -163,33 +194,29 @@ void Calculator::parButtonClicked(string parenthesis)
         if(expResult == true){
             entryTextToDisplay.set_text("");
             expResult=false;
+            floatNumber=false;
         }
         string text = entryTextToDisplay.get_text();
         text.append(parenthesis);
         entryTextToDisplay.set_text(text);
     }
-void Calculator::operationButtonClicked(int index)
+void Calculator::ansButtonClicked()
+{
+    if(expResult == true){
+        entryTextToDisplay.set_text(entryTextToDisplay.get_text());
+        expResult=false;
+        floatNumber=false;
+    }
+}
+void Calculator::operationButtonClicked(string operation)
     {
-        string label="";
-        switch(index){
-            case 0:
-                label ="+";
-                break;
-            case 1:
-                label ="-";
-                break;
-            case 2:
-                label ="*";
-                break;
-            case 3:
-                label ="/";
-                break;
-            case 4:
-                label ="^";
-                break;
-                       }
+        if(expResult == true){
+            entryTextToDisplay.set_text("");
+            expResult=false;
+            floatNumber=false;
+        }
         string text = entryTextToDisplay.get_text();
-        text.append(label);
+        text.append(operation);
         entryTextToDisplay.set_text(text);
     }
 void Calculator::equalButtonClicked()
@@ -272,7 +299,15 @@ bool Calculator::on_key_press_event(GdkEventKey* key_event)
         }
         else if(key_event->keyval == GDK_KEY_KP_Divide){
             command="/";
-        } else if((key_event->keyval == GDK_KEY_asciicircum) &&
+        }
+        else if(key_event->keyval == GDK_KEY_KP_Decimal){
+            if(!floatNumber)
+            {
+                command=".";
+                floatNumber=true;
+            }
+        }
+        else if((key_event->keyval == GDK_KEY_asciicircum) &&
                   (key_event->state &(GDK_SHIFT_MASK | GDK_CONTROL_MASK | GDK_MOD1_MASK)) == GDK_SHIFT_MASK)
         {
             command= "^";
@@ -297,6 +332,7 @@ bool Calculator::on_key_press_event(GdkEventKey* key_event)
                 entryTextToDisplay.set_text("");
                 entryTextToDisplay.set_position(0);
                 expResult=false;
+                floatNumber=false;
             }
         }
         if(command!="")
@@ -304,6 +340,7 @@ bool Calculator::on_key_press_event(GdkEventKey* key_event)
             if(expResult == true){
                 entryTextToDisplay.set_text("");
                 expResult=false;
+                floatNumber= false;
             }
             string text = entryTextToDisplay.get_text();
             text.append(command);
